@@ -1,0 +1,21 @@
+{
+  "name": "groundish-backend",
+  "version": "1.0.0",
+  "description": "Groundish News MERN backend - AI-powered news aggregator with bias analysis & clustering",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "pipeline": "node -e \"import('./services/pipeline.js').then(m => m.runPipeline())\""
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fast-xml-parser": "^4.5.1",
+    "mongoose": "^8.9.5",
+    "node-cron": "^3.0.3"
+  }
+}
