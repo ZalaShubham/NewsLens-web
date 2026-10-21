@@ -1,4 +1,4 @@
-﻿# NewsLens — AI-Powered News Aggregator
+# NewsLens — AI-Powered News Aggregator
 
 > **Full-Stack MERN Application** | MongoDB | Express.js | React 18 | Node.js
 
@@ -159,13 +159,13 @@ Create a `.env` file inside the `backend/` directory:
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb://127.0.0.1:27017/groundish_news
+MONGODB_URI=mongodb://your-host:27017/your-database-name
 ```
 
 | Variable | Default | Description |
 |---|---|---|
 | `PORT` | `5000` | Port the Express server listens on |
-| `MONGODB_URI` | `mongodb://127.0.0.1:27017/groundish_news` | MongoDB connection string |
+| `MONGODB_URI` | `mongodb://your-host:27017/your-database-name` | MongoDB connection string (local or Atlas) |
 
 > **Security:** Never commit your `.env` file. It is already listed in `.gitignore`.
 
