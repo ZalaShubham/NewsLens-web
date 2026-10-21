@@ -1,45 +1,50 @@
-# NewsLens — AI-Powered News Aggregator
+﻿# NewsLens — AI-Powered News Aggregator
 
-> **Full-Stack MERN Application** · MongoDB · Express.js · React 18 · Node.js
+> **Full-Stack MERN Application** | MongoDB | Express.js | React 18 | Node.js
 
 NewsLens is an intelligent, multi-source news aggregator that clusters breaking stories across **60+ rated media outlets**, performs statistical bias analysis, flags left/right coverage blindspots, and delivers multi-perspective story breakdowns — all in a fast, modern web interface.
+
+[![Node.js](https://img.shields.io/badge/Node.js-v18+-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-optional-47A248?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
 ## Table of Contents
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Environment Variables](#-environment-variables)
-- [Running the App](#-running-the-app)
-- [API Reference](#-api-reference)
-- [Architecture Overview](#-architecture-overview)
-- [Frontend Components](#-frontend-components)
-- [Database Models](#-database-models)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Running the App](#running-the-app)
+- [API Reference](#api-reference)
+- [Architecture Overview](#architecture-overview)
+- [Frontend Components](#frontend-components)
+- [Database Models](#database-models)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---|---|
-| **Story Clustering** | Pure JavaScript TF-IDF tokenization with Agglomerative Centroid clustering groups related articles from different outlets |
+| **Story Clustering** | TF-IDF tokenization with Agglomerative Centroid clustering groups related articles across outlets |
 | **Bias Analysis** | Statistical coverage-rate algorithm calculates political skew (Left / Center / Right) per story |
 | **Blindspot Detection** | Flags stories significantly underreported by left-leaning or right-leaning outlets |
 | **Multi-Perspective View** | Side-by-side article comparison with AI Perspective Brief synthesis |
 | **60+ News Sources** | Comprehensive directory with outlet ratings, political lean, and live feed status |
 | **My Bias Tracker** | Real-time personal media diet tracker showing your reading patterns |
 | **Offline / Cache Mode** | Automatically falls back to in-memory cache if MongoDB is unavailable |
-| **RSS/Atom Harvesting** | Parallel concurrent feed fetcher with graceful error tolerance |
+| **RSS/Atom Harvesting** | Parallel concurrent feed fetcher with graceful per-source error tolerance |
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Backend
 
@@ -61,11 +66,11 @@ NewsLens is an intelligent, multi-source news aggregator that clusters breaking 
 | `react-dom` | ^18.3.1 | DOM rendering |
 | `axios` | ^1.7.9 | API communication |
 | `lucide-react` | ^0.475.0 | Icon set |
-| `vite` | ^6.1.0 | Build tool & dev server |
+| `vite` | ^6.1.0 | Build tool and dev server |
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 groundish-mern/
@@ -79,11 +84,11 @@ groundish-mern/
 │   ├── routes/
 │   │   └── auth.js             # Authentication routes
 │   ├── services/
-│   │   ├── analyze.js          # Bias & blindspot engine
+│   │   ├── analyze.js          # Bias and blindspot engine
 │   │   ├── cluster.js          # TF-IDF clustering engine
 │   │   ├── feeds.js            # RSS/Atom feed harvester
 │   │   ├── pipeline.js         # Full data pipeline orchestrator
-│   │   └── sources.js          # 60+ outlet definitions & ratings
+│   │   └── sources.js          # 60+ outlet definitions and ratings
 │   ├── .env                    # Environment variables (not committed)
 │   ├── package.json
 │   └── server.js               # Express app entry point
@@ -101,8 +106,8 @@ groundish-mern/
 │   │   │   ├── SourcesView.jsx
 │   │   │   ├── StoryCard.jsx
 │   │   │   └── StoryModal.jsx
-│   │   ├── App.jsx             # Root component & routing
-│   │   ├── index.css           # Global styles & design tokens
+│   │   ├── App.jsx             # Root component and routing
+│   │   ├── index.css           # Global styles and design tokens
 │   │   └── main.jsx            # React DOM entry point
 │   ├── index.html
 │   ├── package.json
@@ -113,7 +118,7 @@ groundish-mern/
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
 Make sure the following are installed on your system:
 
@@ -125,7 +130,7 @@ Make sure the following are installed on your system:
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### Option A — Install All at Once (Monorepo Script)
 
@@ -148,7 +153,7 @@ npm install
 
 ---
 
-## 🔐 Environment Variables
+## Environment Variables
 
 Create a `.env` file inside the `backend/` directory:
 
@@ -166,7 +171,7 @@ MONGODB_URI=mongodb://127.0.0.1:27017/groundish_news
 
 ---
 
-## 🚀 Running the App
+## Running the App
 
 ### 1. Start the Backend (Port 5000)
 
@@ -206,13 +211,13 @@ This triggers a full fetch → cluster → analyze cycle immediately, outside th
 
 ---
 
-## 📡 API Reference
+## API Reference
 
 All endpoints are served from `http://localhost:5000`.
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/stories` | Returns all clustered & analyzed stories |
+| `GET` | `/api/stories` | Returns all clustered and analyzed stories |
 | `GET` | `/api/sources` | Returns all 60+ outlet definitions with ratings |
 | `GET` | `/api/meta` | Returns pipeline metadata (last run, article count, etc.) |
 | `POST` | `/api/auth/register` | Register a new user account |
@@ -221,54 +226,59 @@ All endpoints are served from `http://localhost:5000`.
 
 ---
 
-## 🏗 Architecture Overview
+## Architecture Overview
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                    DATA PIPELINE                    │
-│                                                     │
-│  feeds.js ──► cluster.js ──► analyze.js ──► MongoDB │
-│  (RSS/Atom)   (TF-IDF)      (Bias Stats)  (Storage) │
-└─────────────────────────────────────────────────────┘
-         ▲                             │
++-----------------------------------------------------+
+|                    DATA PIPELINE                    |
+|                                                     |
+|  feeds.js --> cluster.js --> analyze.js --> MongoDB |
+|  (RSS/Atom)   (TF-IDF)      (Bias Stats)  (Storage) |
++-----------------------------------------------------+
+         ^                             |
    node-cron                   Express REST API
-   (scheduled)                         │
-                                       ▼
-                              ┌─────────────────┐
-                              │  React Frontend  │
-                              │  Vite + React 18 │
-                              └─────────────────┘
+   (scheduled)                         |
+                                       v
+                              +-----------------+
+                              |  React Frontend  |
+                              |  Vite + React 18 |
+                              +-----------------+
 ```
 
 ### Core Services
 
 #### `feeds.js` — Feed Harvester
+
 - Concurrently fetches RSS and Atom feeds from 60+ sources.
 - Normalizes article structure across varying feed schemas.
 - Handles network failures gracefully with per-source error isolation.
 
 #### `cluster.js` — Clustering Engine
+
 - **TF-IDF Tokenization** — Scores term importance across the full article corpus.
 - **Inverted Index Candidate Blocking** — Efficiently narrows the comparison space before clustering.
 - **Agglomerative Centroid Clustering** — Groups articles by semantic similarity into unified story objects.
 
 #### `analyze.js` — Bias Engine
+
 - Computes per-story **Left / Center / Right** coverage rates based on outlet ratings.
 - Detects **blindspots** where one political side covers a story significantly less than the other.
 - Produces bias scores and article counts per political lean.
 
 #### `pipeline.js` — Orchestrator
+
 - Chains Fetch → Cluster → Analyze → Persist in sequence.
 - Scheduled via `node-cron` on the server for automatic updates.
 - Exposes a manual `runPipeline()` export for CLI execution.
 
 #### `sources.js` — Outlet Registry
+
 - Defines 60+ news outlets with political lean rating, RSS feed URL, and display metadata.
 - Single source of truth used by both the harvester and the frontend sources directory.
 
 ---
 
-## 🖥 Frontend Components
+## Frontend Components
 
 | Component | Description |
 |---|---|
@@ -286,7 +296,7 @@ All endpoints are served from `http://localhost:5000`.
 
 ---
 
-## 🗄 Database Models
+## Database Models
 
 | Model | File | Description |
 |---|---|---|
@@ -298,7 +308,7 @@ All endpoints are served from `http://localhost:5000`.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! To get started:
 
@@ -319,15 +329,13 @@ Contributions are welcome! To get started:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**.
 
 ---
 
 <div align="center">
-  <strong>Built with ❤️ using the MERN Stack</strong><br/>
-  MongoDB · Express.js · React 18 · Node.js
+  <strong>Built with the MERN Stack</strong><br/>
+  MongoDB &middot; Express.js &middot; React 18 &middot; Node.js
 </div>
-#   N e w s L e n s - w e b  
- 
